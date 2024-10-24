@@ -29,56 +29,56 @@ class FeesCalculatorTest {
 		
 		//Amount transfered < $200, account from < $2000, account to < $1000
 		//fee is 0.1% of amount transfered
-		assertEquals(100.10, calculator.calculateTransferFee(100, 1999, 999, true));	
+		assertEquals(0.10, calculator.calculateTransferFee(100, 1999, 999, true));	
 	}
 
 	@Test
 	public void TransferFeeTest2() {
 		//Amount transfered < $200, account from < $2000, account to >= $1000
 		//fee is 0.05% of amount transfered
-		assertEquals(100.05, calculator.calculateTransferFee(100, 1999, 1000, true));
+		assertEquals(0.05, calculator.calculateTransferFee(100, 1999, 1000, true));
 	}
 
 	@Test
 	public void TransferFeeTest3() {
 		//Amount transfered < $200, account from >= $2000, account to < $1000
 		//fee is 0.05% of amount transfered
-		assertEquals(100.05, calculator.calculateTransferFee(100, 2000, 999, true));
+		assertEquals(0.05, calculator.calculateTransferFee(100, 2000, 999, true));
 	}
 
 	@Test
 	public void TransferFeeTest4() {
 		//Amount transfered < $200, account from >= $2000, account to >= $1000
 		//fee is 0.025% of amount transfered
-		assertEquals(100.03, calculator.calculateTransferFee(100, 2000, 1000, true));
+		assertEquals(0.03, calculator.calculateTransferFee(100, 2000, 1000, true));
 	}
 
 	@Test
 	public void TransferFeeTest5() {
 		//Amount transfered >= $200, account from < $2000, account to < $1000
 		//fee is 0.05% of amount transfered
-		assertEquals(1000.50, calculator.calculateTransferFee(1000, 1999, 999, true));
+		assertEquals(0.50, calculator.calculateTransferFee(1000, 1999, 999, true));
 	}
 
 	@Test
 	public void TransferFeeTest6() {
 		//Amount transfered >= $200, account from < $2000, account to >= $1000
 		//fee is 0.025% of amount transfered
-		assertEquals(1000.25, calculator.calculateTransferFee(1000, 1999, 1000, true));
+		assertEquals(0.25, calculator.calculateTransferFee(1000, 1999, 1000, true));
 	}
 
 	@Test
 	public void TransferFeeTest7() {
 		//Amount transfered >= $200, account from >= $2000, account to < $1000
 		//fee is 0.25% of amount transfered
-		assertEquals(1002.50, calculator.calculateTransferFee(1000, 2000, 999, true));
+		assertEquals(2.50, calculator.calculateTransferFee(1000, 2000, 999, true));
 	}
 
 	@Test
 	public void TransferFeeTest8() {
 		//Amount transfered >= $200, account from >= $2000, account to >= $1000
 		//fee is 0.125% of amount transfered
-		assertEquals(1001.25, calculator.calculateTransferFee(1000, 2000, 1000, true));
+		assertEquals(1.25, calculator.calculateTransferFee(1000, 2000, 1000, true));
 	}
 
 
