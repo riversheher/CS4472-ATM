@@ -23,6 +23,8 @@ class FeesCalculatorTest {
 		assertEquals(0.2, calculator.calculateWithdrawalFee(200, 1000, false, 0));		//pass
 		//assertEquals(0.01, calculator.calculateWithdrawalFee(200, 1000, false, 0));	//fail
 	}
+
+
 	//Is Student
 	@Test
 	public void TransferFeeTest1() {
@@ -140,5 +142,31 @@ class FeesCalculatorTest {
 		assertEquals(0.25, calculator.calculateTransferFee(100, 2000, 1000, false));
 	}
 
+	@Test 
+	public void TransferFeeTestB1() {
+		//The basis path selected (TTTT)
+		assertEquals(0.10, calculator.calculateTransferFee(100, 0, 0, true));
+	}
 
-}
+	@Test
+	public void TransferFeeTestB2() {
+		//Last decision changed (TTTF)
+		assertEquals(0.05, calculator.calculateTransferFee(100, 0, 1000, true));
+	}
+
+	@Test
+	public void TransferFeeTestB3() {
+		//Second last decision changed (TTFT)
+		assertEquals(0.05, calculator.calculateTransferFee(100, 2000, 0, true));	
+	}
+
+	@Test
+	public void TransferFeeTestB4() {
+		//Third last decision changed (TFTT)
+		assertEquals(0.25, calculator.calculateTransferFee(1000, 0, 1000, true));
+	}
+
+	@Test
+	public void TransferFeeTestB5(){
+		assertEquals(0.02, calculator.calculateTransferFee(10, 0, 0, false));	
+	}
