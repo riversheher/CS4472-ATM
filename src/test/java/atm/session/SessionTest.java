@@ -26,35 +26,33 @@ public class SessionTest {
     }
 
     // PIN FORMAT TESTS
-    
+
     @Test
     public void testValidPINLength() {
         // Valid 4-digit PIN
-        Assertions.assertDoesNotThrow(() -> session.addPin(new char[]{'1', '2', '3', '4'}));
+        Assertions.assertDoesNotThrow(() -> session.addPin(new char[] { '1', '2', '3', '4' }));
     }
 
     @Test
     public void testLongPINLength() {
         // Invalid PIN with more than 4 digits
-        Assertions.assertThrows(IllegalArgumentException.class, 
-            () -> session.addPin(new char[]{'1', '2', '3', '4', '5'}));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> session.addPin(new char[] { '1', '2', '3', '4', '5' }));
     }
 
     @Test
     public void testShortPIN() {
         // Invalid PIN with less than 4 digits
-        Assertions.assertThrows(IllegalArgumentException.class, 
-            () -> session.addPin(new char[]{'1', '2', '3'}));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> session.addPin(new char[] { '1', '2', '3' }));
     }
-    
 
     @Test
     public void testNonnumericPIN() {
         // PIN containing non-numeric characters
-        Assertions.assertThrows(IllegalArgumentException.class, 
-            () -> session.addPin(new char[]{'1', 'A', '!', '4'}));
+        Assertions.assertThrows(IllegalArgumentException.class,
+                () -> session.addPin(new char[] { '1', 'A', '!', '4' }));
     }
-    
 
     // WITHDRAWAL AMOUNT TESTS
 
@@ -111,8 +109,6 @@ public class SessionTest {
         // Valid amount: 990 (minimum valid withdrawal)
         Assertions.assertDoesNotThrow(() -> session.setAmount(990));
     }
-    
-    
     @Test
     public void testBelowSmallestMultiple() throws InvalidAmountException {
         Mockito.when(transaction.getTransactionType()).thenReturn(TransactionType.Withdrawal);
@@ -121,7 +117,6 @@ public class SessionTest {
         // Invalid amount: 10 (below minimum valid withdrawal)
         Assertions.assertDoesNotThrow(() -> session.setAmount(10));
     }
-    
     @Test
     public void testAboveAvailableBalance() throws InvalidAmountException {
         Mockito.when(transaction.getTransactionType()).thenReturn(TransactionType.Withdrawal);

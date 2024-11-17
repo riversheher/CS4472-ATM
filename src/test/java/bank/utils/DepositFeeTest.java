@@ -44,4 +44,44 @@ public class DepositFeeTest {
         assertEquals(0.75, calculator.calculateDepositInterest(300, -1, true));
     }
 
+    @Test
+    public void depositCaseS1() {
+        assertEquals(1, calculator.calculateDepositInterest(200, 2000, true));
+    }
+
+    @Test
+    public void depositCaseS2() {
+        assertEquals(1, calculator.calculateDepositInterest(200, 1000, true));
+    }
+
+    @Test
+    public void depositCaseS3() {
+        assertEquals(0.5, calculator.calculateDepositInterest(100, 6000, true));
+    }
+
+    @Test
+    public void depositCaseS4() {
+        assertEquals(0.5, calculator.calculateDepositInterest(100, 5000, true));
+    }
+
+    @Test
+    public void depositCaseNS1() {
+        assertEquals(4.8, calculator.calculateDepositInterest(600, 6000, false));
+    }
+
+    @Test
+    public void depositCaseNS2() {
+        assertEquals(4.8, calculator.calculateDepositInterest(600, 5000, false));
+    }
+
+    @Test
+    public void depositCaseNS3() {
+        assertEquals(4, calculator.calculateDepositInterest(500, 11000, false));
+    }
+
+    @Test
+    public void depositCaseNS4() {
+        assertEquals(4, calculator.calculateDepositInterest(500, 10000, false));
+    }
+
 }
