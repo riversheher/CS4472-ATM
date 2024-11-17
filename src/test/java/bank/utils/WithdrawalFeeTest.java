@@ -2,6 +2,8 @@ package bank.utils;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Calendar;
+
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -112,6 +114,31 @@ public class WithdrawalFeeTest {
     @Test
     public void withdrawalCaseD7() {
         assertEquals(0.5, calculator.calculateWithdrawalFee(500, 1000, false, 8));
+    }
+
+    @Test
+    public void withdrawalCaseTC1() {
+        assertEquals(0.0, calculator.calculateWithdrawalFee(100.0, 500.0, true, Calendar.MONDAY), 0.001);
+    }
+
+    @Test
+    public void withdrawalCaseTC2() {
+        assertEquals(0.1, calculator.calculateWithdrawalFee(100.0, 500.0, true, Calendar.SATURDAY), 0.001);
+    }
+
+    @Test
+    public void withdrawalCaseTC3() {
+        assertEquals(0.3, calculator.calculateWithdrawalFee(100.0, 999.99, false, Calendar.MONDAY), 0.001);
+    }
+
+    @Test
+    public void withdrawalCaseTC4() {
+        assertEquals(0.1, calculator.calculateWithdrawalFee(100.0, 2000.0, false, Calendar.MONDAY), 0.001);
+    }
+
+    @Test
+    public void withdrawalCaseTC5() {
+        assertEquals(0.0, calculator.calculateWithdrawalFee(100.0, 6000.0, false, Calendar.MONDAY), 0.001);
     }
 
 }

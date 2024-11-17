@@ -171,3 +171,4 @@ class FeesCalculatorTest {
 		//Forth last decision changed (FTTT)
 		assertEquals(0.02, calculator.calculateTransferFee(10, 0, 0, false));	
 	}
+}
